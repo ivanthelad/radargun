@@ -1,0 +1,223 @@
+<settings>
+
+<mirrors>
+<mirror>
+<mirrorOfLayouts/>
+<id>jboss-deprecated</id>
+<name>JBoss Deprecated Repository</name>
+  <url>http://repository.jboss.org/nexus/content/repositories/deprecated</url>
+<mirrorOf>repository.jboss.org</mirrorOf>
+</mirror>
+
+</mirrors>
+
+<profiles>
+
+<profile>
+<id>public-repositories</id>
+<activation>
+<property>
+<name>allTests</name>
+</property>
+</activation>
+<repositories>
+<repository>
+<id>central-jdg6</id>
+<name>Use unique IDs for downloading artifacts vs. plugins from central</name>
+<url>http://repo1.maven.org/maven2</url>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>false</enabled>
+</snapshots>
+</repository>
+<repository>
+<id>jboss-public-jdg6</id>
+<name>JBoss Public Repository Group</name>
+  <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+<layout>default</layout>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</snapshots>
+</repository>
+</repositories>
+</profile>
+<!-- Mead repository profile must be placed after public repository profile
+| and before public plugin repository profile. This allows the Mead repository
+| to be prioritized over public repositories and public plugin repositories
+| when all repository profiles are active.
+-->
+<profile>
+<id>jdg-mead-repository</id>
+<activation>
+<property>
+<name>!jdg-mead-repository</name>
+</property>
+</activation>
+<repositories>
+<repository>
+<id>mead-jdg6</id>
+<name>MEAD JDG6 Maven Repository</name>
+  <url>http://download.lab.eng.bos.redhat.com/brewroot/repos/jb-edg-6-rhel-6-build/latest/maven/</url>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>false</enabled>
+</snapshots>
+</repository>
+<repository>
+<id>central-jdg6</id>
+<name>Use unique IDs for downloading artifacts vs. plugins from central</name>
+<url>http://repo1.maven.org/maven2</url>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>false</enabled>
+</snapshots>
+</repository>
+<repository>
+<id>jboss-public-jdg6</id>
+<name>JBoss Public Repository Group</name>
+  <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+<layout>default</layout>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</snapshots>
+</repository>
+<repository>
+<id>brewroot-directory</id>
+<name>BrewRoot Dir</name>
+  <!--<url>http://download.devel.redhat.com/brewroot/work/tasks/3323/5903323</url>-->
+  <!--<url>http://download.devel.redhat.com/brewroot/packages/org.infinispan-infinispan/5.2.4.Final_redhat_3/1/maven/</url>-->
+  <url>http://download.lab.eng.bos.redhat.com/brewroot/work/tasks/617/5930617/</url>
+<layout>default</layout>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</snapshots>
+</repository>
+</repositories>
+
+<!-- Note: plugin repositories have non-matching IDs to dependency repositories.
+| This allows plugin repos to be mirrored separately.
+-->
+<pluginRepositories>
+<pluginRepository>
+<id>mead-jdg6-plugins</id>
+<name>MEAD JDG6 Maven Plugin Repository</name>
+  <url>http://download.lab.eng.bos.redhat.com/brewroot/repos/jb-edg-6-rhel-6-build/latest/maven/</url>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>false</enabled>
+</snapshots>
+</pluginRepository>
+<pluginRepository>
+<id>central-jdg6-plugins</id>
+<name>Use unique IDs for downloading artifacts vs. plugins from central</name>
+<url>http://repo1.maven.org/maven2</url>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>false</enabled>
+</snapshots>
+</pluginRepository>
+<pluginRepository>
+<id>jboss-public-jdg6-plugins</id>
+<name>JBoss Public Repository Group Plugins</name>
+  <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+<releases>
+<enabled>true</enabled>
+</releases>
+<snapshots>
+<enabled>true</enabled>
+</snapshots>
+</pluginRepository>
+</pluginRepositories>
+</profile>
+
+<profile>
+<id>public-plugin-repositories</id>
+<activation>
+<property>
+<name>allTests</name>
+</property>
+</activation>
+<!-- Note: plugin repositories have non-matching IDs to dependency repositories.
+| This allows plugin repos to be mirrored separately.
+-->
+<pluginRepositories>
+<pluginRepository>
+<id>central-jdg6-plugins</id>
+<name>Use unique IDs for downloading artifacts vs. plugins from central</name>
+<url>http://repo1.maven.org/maven2</url>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>false</enabled>
+</snapshots>
+</pluginRepository>
+<pluginRepository>
+<id>jboss-public-jdg6-plugins</id>
+<name>JBoss Public Repository Group Plugins</name>
+  <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+<releases>
+<enabled>true</enabled>
+</releases>
+<snapshots>
+<enabled>true</enabled>
+</snapshots>
+</pluginRepository>
+</pluginRepositories>
+</profile>
+
+<!-- Include early access of application server and other products -->
+<profile>
+<id>redhat-earlyaccess-repository</id>
+<repositories>
+<repository>
+<id>redhat-earlyaccess-repository-group</id>
+<name>Red Hat early access repository</name>
+<url> http://maven.repository.redhat.com/earlyaccess/all/ </url>
+<layout>default</layout>
+<releases>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</releases>
+<snapshots>
+<enabled>true</enabled>
+<updatePolicy>never</updatePolicy>
+</snapshots>
+</repository>
+</repositories>
+</profile>
+
+</profiles>
+
+</settings>
